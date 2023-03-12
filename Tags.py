@@ -40,8 +40,6 @@ class InputTag:
             attr += f" id={self.id}"
         return f'<input {attr}>'
 
-
-
 class DivTag:
     def __init__(self, div_class= None, id= None, content= None):
         self.div_class = div_class
@@ -58,8 +56,6 @@ class DivTag:
             attr += f" content{self.content}"
         return f"<div{attr}></div>"
             
-
-
 class LinkTag:
     def __init__(self, href, text) :
         self.href = href
@@ -67,9 +63,6 @@ class LinkTag:
 
     def __str__(self) -> str:
         return f"<a href='{self.href}'>{self.text}</a>"
-
-
-
 
 class ImgTag:
     def __init__(self, src, alt, width= None, height= None):
@@ -86,8 +79,6 @@ class ImgTag:
             attr += f" height={self.height}"
         return f"<img src='{self.src}' alt='{self.alt}'{attr}>"
        
-
-
 class FormTag:
     def __init__(self, inputs=None, action=None, method="GET"):
         self.action = action 
@@ -105,6 +96,3 @@ class FormTag:
         attrs += f" method='{self.method}'"
 
         return f'<form{attrs}>{self.input_str}\n</form>'
-
-
-
