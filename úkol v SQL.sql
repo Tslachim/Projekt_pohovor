@@ -14,7 +14,7 @@ CREATE TABLE album (
 	id_album SERIAL,
     id_typ_zanr INT NOT NULL,
 	nazev VARCHAR (255) UNIQUE NOT NULL,
-	datum_vydani INT, 
+	datum_vydani DATE, 
     CONSTRAINT "PK_id_album" PRIMARY KEY (id_album),
     CONSTRAINT "FK_id_typ_zanr" FOREIGN KEY (id_typ_zanr) REFERENCES typ_zanr (id_typ_zanr) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
@@ -160,7 +160,7 @@ JOIN album_interpret
 JOIN interpret
 	ON album_interpret.id_interpret = interpret.id_interpret
 GROUP BY interpret.nazev, album.nazev
-ORDER BY interpret.nazev, interpret.nazev
+ORDER BY interpret.nazev, album.nazev
 
 
 -- Najít album včetně interpreta, které obsahuje nejdelší písničku.
