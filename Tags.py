@@ -1,18 +1,13 @@
 class SelectTag:
-    def __init__(self, name= None, id= None, options= None, selected_options= None) -> None:
+    def __init__(self, name= None, id= None, options= None):
         self.name = name
         self.id = id 
         self.options = options
-        self.selected_options = selected_options
 
     def __str__(self) -> str:
-        if self.options != None:
+        if self.options:
             options_html = ""
             for option in self.options:
-                if option == self.selected_options:
-                    options_html += f"\n\t<option value='{option}' selected>{option}</option>"
-                else:
-                    selected = ""
                     options_html += f"\n\t<option value='{option}'>{option}</option>"
             for one_option in options_html:       
                 if self.name != None and self.id == None:
@@ -33,18 +28,14 @@ class SelectTag:
             else:
                 return f"<select name='{self.name}' id='{self.id}'></select>"
 
-
 class InputTag:
-    def __init__(self, name ,value= None, id= None, type= "text"):
+    def __init__(self, name , id= None, type= "text"):
         self.type = type
         self.id = id
-        self.value = value
         self.name = name
 
     def __str__(self) -> str:
         attr = f"type='{self.type}' name='{self.name}'"
-        if self.value:
-            attr += f" value={self.value}"
         if self.id:
             attr += f" id={self.id}"
         return f'<input {attr}>'
@@ -52,9 +43,10 @@ class InputTag:
 
 
 class DivTag:
-    def __init__(self, div_class= None, id= None):
+    def __init__(self, div_class= None, id= None, content= None):
         self.div_class = div_class
         self.id = id
+        self.content = content
 
     def __str__(self) -> str:
         attr = ""
@@ -62,21 +54,20 @@ class DivTag:
             attr += f" class='{self.div_class}'"
         if self.id:
             attr += f" id={self.id}"
+        if self.content:
+            attr += f" content{self.content}"
         return f"<div{attr}></div>"
-# přideat cnontent?? podívat se ještě na to 
             
 
 
-class ATag:
-    def __init__(self, href, text= None) :
+class LinkTag:
+    def __init__(self, href, text) :
         self.href = href
         self.text = text
 
     def __str__(self) -> str:
-        if self.text:
-            return f"<a href='{self.href}'>{self.text}</a>"
-        else:
-            return f"<a href='{self.href}'></a>"
+        return f"<a href='{self.href}'>{self.text}</a>"
+
 
 
 
