@@ -46,9 +46,15 @@ class DivTag:
             attr += f" class='{self.div_class}'"
         if self.id:
             attr += f" id={self.id}"
-        if self.content:
-            attr += f" content{self.content}"
-        return f"<div{attr}></div>"
+       
+        return f"<div{attr}>\n{self._build_content( self.content)}</div>"
+
+    def _build_content(self, content):
+        if content:
+            return "\n".join("\t" + str(item) for item in content) + "\n"
+        else:
+            return "" 
+
             
 class LinkTag:
     def __init__(self, href, text) :
