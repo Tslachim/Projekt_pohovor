@@ -5,28 +5,22 @@ class SelectTag:
         self.options = options
 
     def __str__(self) -> str:
+        options_html = ""
         if self.options:
-            options_html = ""
             for option in self.options:
                     options_html += f"\n\t<option value='{option}'>{option}</option>"
-            for one_option in options_html:       
-                if self.name != None and self.id == None:
-                    return f"<select name='{self.name}'>{options_html}</select>"
-                elif self.name == None and self.id != None:
-                    return f"<select id='{self.id}'>{options_html}</select>"
-                elif self.name == None and self.id == None:
-                    return f"<select>{options_html}</select>"
-                else:
-                    return f"<select name='{self.name}' id='{self.id}'>{options_html}\n</select>"
-        else: 
-            if self.name != None and self.id == None:
-                return f"<select name='{self.name}'></select>"
-            elif self.name == None and self.id != None:
-                return f"<select id='{self.id}'></select>"
-            elif self.name == None and self.id == None:
-                return f"<select></select>"
-            else:
-                return f"<select name='{self.name}' id='{self.id}'></select>"
+            options_html += "\n"
+            
+    
+        if self.name != None and self.id == None:
+            return f"<select name='{self.name}'>{options_html}</select>"
+        elif self.name == None and self.id != None:
+            return f"<select id='{self.id}'>{options_html}</select>"
+        elif self.name == None and self.id == None:
+            return f"<select>{options_html}</select>"
+        else:
+            return f"<select name='{self.name}' id='{self.id}'>{options_html}</select>"
+
 
 class InputTag:
     def __init__(self, name , id= None, type= "text"):
