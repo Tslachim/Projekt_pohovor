@@ -4,8 +4,6 @@ from Tags import *
 select = SelectTag(name= "Auto", id= "New_car_select_id", options= ("BMW", "Škoda", "Audi", "Hyundai"))
 print(select)
 
-
-
 # Vypsání Inputu a Zároveň Form
 name = InputTag("jmeno")
 surname = InputTag("prijmeni", )
